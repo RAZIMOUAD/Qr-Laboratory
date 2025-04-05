@@ -1,0 +1,65 @@
+
+🔧 Guide Complet pour Générer un QR Code Professionnel en Python (avec logo, couleur, SVG)
+
+Étape 1 : Installer Python (si ce n’est pas encore fait)
+--------------------------------------------------------
+➡️ Télécharge Python ici : https://www.python.org/downloads/
+➡️ Coche “Add Python to PATH” pendant l’installation
+
+Étape 2 : Installer la librairie Python pour QR Code
+----------------------------------------------------
+Ouvre ton terminal (CMD ou terminal VS Code) et tape :
+    pip install segno
+
+(segno est une des meilleures bibliothèques QR pour personnalisation)
+
+Étape 3 : Créer ton premier QR Code simple
+------------------------------------------
+Crée un fichier nommé `mon_qr.py` avec ce contenu :
+
+import segno
+
+qr = segno.make('https://www.transportouhaddou.com')
+qr.save('qrcode-bleu.svg', scale=10, dark='darkblue', light='white')
+
+🟦 Cela va générer un QR Code bleu sur fond blanc au format SVG vectoriel.
+
+Étape 4 : Personnaliser encore plus ton QR Code
+-----------------------------------------------
+- Changer la couleur :
+    dark='black'    → couleur des modules
+    light='white'   → couleur de fond
+
+- Ajouter une marge :
+    qr.save('nom.svg', border=2)
+
+- Changer le format :
+    qr.save('mon_qr.png', scale=10)
+
+- Forcer le niveau de correction (utile pour logo intégré) :
+    qr = segno.make('https://...', error='h')  # H = haute correction
+
+Étape 5 : Ajouter un logo (optionnel, méthode recommandée)
+----------------------------------------------------------
+segno ne permet pas directement l’ajout d’un logo, mais tu peux utiliser un éditeur SVG comme Inkscape :
+1. Génère le QR Code en SVG
+2. Ouvre le SVG dans Inkscape
+3. Insère ton logo au centre
+4. Enregistre ou exporte en PDF/PNG pour impression
+
+Étape 6 : Tester ton QR Code
+-----------------------------
+📱 Ouvre l’appareil photo de ton téléphone et scanne-le.
+✅ Il doit ouvrir : https://www.transportouhaddou.com
+
+Bonus : UTM pour suivi Google Analytics (optionnel)
+---------------------------------------------------
+Tu peux suivre les clics depuis ton QR code via Google Analytics :
+
+url = 'https://www.transportouhaddou.com?utm_source=qr&utm_medium=print&utm_campaign=agence'
+
+qr = segno.make(url)
+qr.save('qr-suivi.svg', scale=10)
+
+-----------------------------------
+Coach SEO & Web – ChatGPT 🧠
